@@ -1,4 +1,4 @@
-package nl.workingspirit;
+package nl.workingspirit.ski;
 
 /**
  * Hello world!

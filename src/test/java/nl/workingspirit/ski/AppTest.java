@@ -1,4 +1,4 @@
-package nl.workingspirit;
+package nl.workingspirit.ski;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

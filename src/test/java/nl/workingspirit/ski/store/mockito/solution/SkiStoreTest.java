@@ -1,4 +1,4 @@
-package nl.workingspirit.ski.store;
+package nl.workingspirit.ski.store.mockito.solution;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,6 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import nl.workingspirit.ski.model.Skies;
 import nl.workingspirit.ski.service.SkiService;
+import nl.workingspirit.ski.store.SkiStore;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkiStoreTest {

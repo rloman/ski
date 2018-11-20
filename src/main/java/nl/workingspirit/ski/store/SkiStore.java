@@ -8,6 +8,7 @@ public class SkiStore {
    private SkiService skiService;
 
    public double rent(Skies skies) {
+      
       return this.skiService.rent(skies);
    }
 

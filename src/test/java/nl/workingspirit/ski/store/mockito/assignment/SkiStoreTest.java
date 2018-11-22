@@ -16,7 +16,7 @@ public class SkiStoreTest {
   // mockit 
    private SkiService service;
    
-   @Test
+//   @Test
    public void testRent() {
       
       // Given (Arrange)

@@ -5,15 +5,15 @@ import java.util.Collection;
 
 public class Scheduler {
 
-   private ArrayDeque<Task> taskList = new ArrayDeque<>();
+   private ArrayDeque<Task> taskQueue = new ArrayDeque<>();
 
    public void add(Task t) {
       
       if("Willem-Alexander".equals(t.getPersonName())) {
-         this.taskList.push(t);
+         this.taskQueue.push(t);
       }
       else {
-         this.taskList.add(t);
+         this.taskQueue.add(t);
       }
       
    }
@@ -23,8 +23,8 @@ public class Scheduler {
    }
    
    public void execute() {
-      while(!taskList.isEmpty()) {
-         Task victim = taskList.poll();
+      while(!taskQueue.isEmpty()) {
+         Task victim = taskQueue.poll();
          victim.execute();
       }
    }

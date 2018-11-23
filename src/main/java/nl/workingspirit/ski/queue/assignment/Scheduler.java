@@ -21,7 +21,7 @@ public class Scheduler {
    }
    
    public void execute() {
-//      while(!taskList.isEmpty()) {
+//      while(!taskQueue.isEmpty()) {
 //      ????
 //         victim.execute();
 //      }

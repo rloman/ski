@@ -2,6 +2,7 @@ package nl.workingspirit.ski.navigable.solution;
 
 import java.util.Arrays;
 import java.util.NavigableSet;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class TrainSchedule {
@@ -20,5 +21,13 @@ public class TrainSchedule {
    public String getTimeAfter(String time) {
       return this.schedule.higher(time);
    }
+   
+   // bonus :-)
+   public Set<String> laterTrains(String time) {
+      return this.schedule.tailSet(time,  false);
+   }
+   
+   
+   
 
 }

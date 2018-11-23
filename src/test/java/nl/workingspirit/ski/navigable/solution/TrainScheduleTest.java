@@ -1,5 +1,7 @@
 package nl.workingspirit.ski.navigable.solution;
 
+import java.util.Set;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,6 +20,16 @@ public class TrainScheduleTest {
    @Test
    public void testSomeBefore() {
       Assert.assertEquals("13:15", this.trainSchedule.getTimeAfter("13:00"));
+   }
+   
+   @Test
+   public void testLaterTrains() {
+      Set<String> laterTrains = this.trainSchedule.laterTrains("12:00");
+      
+      Assert.assertTrue(laterTrains.contains("13:15"));
+      Assert.assertTrue(laterTrains.contains("16:30"));
+      
+      Assert.assertEquals(2,  laterTrains.size());
    }
 
 }

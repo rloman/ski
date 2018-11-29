@@ -1,4 +1,4 @@
-package nl.workingspirit.ski.iterator.solution;
+package nl.workingspirit.ski.iterator.assignment;
 
 
 public class Application {
@@ -12,9 +12,11 @@ public class Application {
       m.add(new Fruit("Pear"));
       m.add(new Fruit("Banana"));
       
+      /*
       for(Fruit fruit: m) {
          System.out.println(fruit);
       }
+      */
    }
 
 }

@@ -19,7 +19,7 @@ public class TrainScheduleTest {
    
    @Test
    public void testSomeBefore() {
-      Assert.assertEquals("13:15", this.trainSchedule.getTimeAfter("13:00"));
+      Assert.assertEquals("10:30", this.trainSchedule.getTimeBefore("10:32"));
    }
    
    @Test

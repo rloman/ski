@@ -15,6 +15,7 @@ public class TrainSchedule {
    }
    
    public String getTimeBefore(String time) {
+      
       return this.schedule.lower(time);
    }
    

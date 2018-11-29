@@ -14,9 +14,6 @@ public class Application {
 
       for (int square : squareIterable) {
          
-         // should not come here! :-)
-         
-         System.out.println(0/0);
 
          System.out.println(square);
 

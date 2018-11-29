@@ -29,6 +29,6 @@ public class SquareIterator implements Iterable <Integer>, Iterator<Integer> {
 
    @Override
    public Iterator<Integer> iterator() {
-      return this;
+      return new SquareIterator(min, max);
    }
 }

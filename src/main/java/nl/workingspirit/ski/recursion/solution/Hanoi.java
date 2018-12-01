@@ -4,6 +4,7 @@ package nl.workingspirit.ski.recursion.solution;
 public class Hanoi {
    
    public static void hanoi(int aantal) {
+      System.out.printf("Starting hanoi puzzle with '%d' disk%s%n", aantal, aantal > 1 ? "s": "");
       hanoi(aantal, 1,2,3);
       System.out.println("Done");
    }

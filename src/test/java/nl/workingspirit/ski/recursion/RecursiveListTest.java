@@ -19,33 +19,33 @@ public class RecursiveListTest {
    @Test
    public void testAdd(){
 
-      recList.add("Raymond");
-      recList.add("Annebert");
-      recList.add("Lieke");
-      recList.add("Wout");
+      recList.add("Ray");
+      recList.add("NAC");
+      recList.add("Heracles");
+      recList.add("Eagles");
       
       String result = recList.toString();
-      assertEquals("RayAnnebertLiekeWout", result);
+      assertEquals("RayNACHeraclesEagles", result);
 
       assertEquals(4, recList.size());
 
-      assertEquals("Lieke", recList.get(2));
+      assertEquals("Heracles", recList.get(2));
 
-      assertEquals("Wout", recList.get(3));
+      assertEquals("Eagles", recList.get(3));
 
-      assertTrue(recList.contains("Annebert"));
+      assertTrue(recList.contains("NAC"));
       
-      recList.update("Annebert", "Annebert is lief");
+      recList.update("NAC", "NAC is de mooiste club");
       
       result = recList.toString();
       
-      assertEquals("RayAnnebert is liefLiekeWout", result);
+      assertEquals("RayNAC is de mooiste clubHeraclesEagles", result);
       
-      recList.delete("Wout");
+      recList.delete("Eagles");
       
       result = recList.toString();
       
-      assertEquals("RayAnnebert is liefLieke", result);
+      assertEquals("RayNAC is de mooiste clubHeracles", result);
       
       assertEquals(3, recList.size());
    }

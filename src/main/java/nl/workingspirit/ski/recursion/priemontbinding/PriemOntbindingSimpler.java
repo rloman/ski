@@ -18,7 +18,7 @@ public class PriemOntbindingSimpler {
 
 
       //simplest case?
-      if(Double.valueOf(n)  / Double.valueOf(lastFactor) == 1) {
+      if(lastFactor == n) {
          factors.add(lastFactor);
          
          return factors;

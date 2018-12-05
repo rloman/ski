@@ -36,9 +36,19 @@ public class PriemOntbindingSimplerTest {
    }
 
    @Test
-	public void test4(){
-		Assert.assertEquals(Arrays.asList(2,2), this.po.po(4));
-	}
+   public void test4() {
+      Assert.assertEquals(Arrays.asList(2, 2), this.po.po(4));
+   }
+
+   @Test
+   public void test2004() {
+      Assert.assertEquals(Arrays.asList(2, 2, 3, 167), this.po.po(2004));
+   }
+   
+   @Test
+   public void test1970() {
+      Assert.assertEquals(Arrays.asList(2, 5, 197), this.po.po(1970));
+   }
 
    @Test
    public void test1024() {

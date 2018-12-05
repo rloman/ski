@@ -19,9 +19,4 @@ public class Card {
    public String toString() {
       return "Card [name=" + name + "]";
    }
-   
-   
-   
-   
-
 }

@@ -26,6 +26,7 @@ public class Application {
       // probleem
 //      cards.getStock().remove(aas);
 
+	 // slimme en goede manier
       for (Card element : cards) {
 
          System.out.println(element);
@@ -37,10 +38,7 @@ public class Application {
          Card c = kaartenIterator.next();
          System.out.println(c);
       }
-      
-      Collection<Card> alternateMethod = cards.unmod();
-      alternateMethod.add(new Card("Vrouw"));
-      
+
       
    }
 

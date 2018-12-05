@@ -18,8 +18,4 @@ public class Stock implements Iterable<Card> {
    public Iterator<Card> iterator() {
      return this.stock.iterator();
    }
-   
-   public Collection<Card> unmod() {
-      return Collections.unmodifiableCollection(this.stock);
-   }
 }

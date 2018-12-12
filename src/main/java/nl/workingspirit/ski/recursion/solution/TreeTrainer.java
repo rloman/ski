@@ -15,6 +15,17 @@ public class TreeTrainer {
       
       
       tree.pp();
+      System.out.println();
+      
+      System.out.println(tree.smallest());
+      System.out.println(tree.largest());
+      
+      System.out.println(tree.size());
+      
+      tree.delete(3);
+      
+      tree.pp();
+      
 
    }
 

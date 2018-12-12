@@ -57,9 +57,6 @@ public class Tree {
    }
    
    public void delete(int n) {
-     // if(this.value == null) {
-       //  return;
-    //  }
       if(this.value.equals(n)) {
          if(isLeaf()) {
             this.value = null;

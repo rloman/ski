@@ -18,7 +18,7 @@ public class Application {
 
       // Collections.sort(atables);
 
-      List<Integer> result = solve(21, atables);
+      List<Integer> result = solve(7, atables);
       System.out.println(result);
 
    }
@@ -34,15 +34,17 @@ public class Application {
 
       }
       else {
-         for (int element : availableTables) {
-            if (element < guests && !goalReached) {
-               availableTables.remove(element);
-               List<Integer> subList = solve(guests - element, availableTables);
+         if(!goalReached) {
+            for (int element : availableTables) {
+               if (element < guests && !goalReached) {
+                  availableTables.remove(element);
+                  List<Integer> subList = solve(guests - element, availableTables);
 
-               // apparently there is a solution for the smaller value so now please at the element since I can make a (recursive) solution here, what I did above.
-               if (!subList.isEmpty()) {
-                  result.add(element);
-                  result.addAll(subList);
+                  // apparently there is a solution for the smaller value so now please at the element since I can make a (recursive) solution here, what I did above.
+                  if (!subList.isEmpty()) {
+                     result.add(element);
+                     result.addAll(subList);
+                  }
                }
             }
          }

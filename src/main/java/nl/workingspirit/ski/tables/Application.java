@@ -8,42 +8,44 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Application {
 
-   private static Queue<Integer> tables = new ConcurrentLinkedQueue<>();
    
+
    public static boolean found = false;
 
-   static {
-      tables.addAll(Arrays.asList(4, 3, 2, 1));
-   }
-
    public static void main(String[] args) {
+      
+      Queue<Integer> atables = new ConcurrentLinkedQueue<>();
+      atables.addAll(Arrays.asList(6, 5, 4, 3, 2, 1));
 
-      List<Integer> result = new ArrayList<>();
-
-      result = solve(5);
+      List<Integer> result= solve(1, atables);
       System.out.println(result);
 
    }
 
-   public static List<Integer> solve(int guests) {
-      
+   public static List<Integer> solve(int guests, Queue<Integer> availableTables) {
+
       List<Integer> result = new ArrayList<>();
       
-      if (tables.contains(guests)) {
+      if(availableTables.isEmpty()) {
+         return new ArrayList<>();
+      }
+
+      if (availableTables.contains(guests)) {
          result.add(guests);
          found = true;
+         
+         return result;
       }
       else {
-         for (int element : tables) {
-//            System.out.println(tables);
-            if (element < guests && !found && !tables.isEmpty()) {
+         for (int element : availableTables) {
+            if (element < guests && !found) {
                result.add(element);
-               tables.remove(element);
-               result.addAll(solve(guests - element));
+               availableTables.remove(element);
+               result.addAll(solve(guests - element, availableTables));
             }
          }
+         return result;
       }
-      return result;
 
    }
 

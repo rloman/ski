@@ -8,16 +8,17 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Application {
 
-   
-
    public static boolean found = false;
 
    public static void main(String[] args) {
-      
+
       Queue<Integer> atables = new ConcurrentLinkedQueue<>();
       atables.addAll(Arrays.asList(6, 5, 4, 3, 2, 1));
+      // atables.addAll(Arrays.asList(1, 2, 3, 4, 5, 6));
 
-      List<Integer> result= solve(16, atables);
+      // Collections.sort(atables);
+
+      List<Integer> result = solve(7, atables);
       System.out.println(result);
 
    }
@@ -25,24 +26,29 @@ public class Application {
    public static List<Integer> solve(int guests, Queue<Integer> availableTables) {
 
       List<Integer> result = new ArrayList<>();
-      
-      if(availableTables.isEmpty()) {
-        return result;
+
+      if (availableTables.isEmpty()) {
+         return result;
       }
 
       if (availableTables.contains(guests)) {
          result.add(guests);
          availableTables.remove(guests);
          found = true;
-         
+
          return result;
       }
       else {
          for (int element : availableTables) {
             if (element < guests && !found) {
-               result.add(element);
                availableTables.remove(element);
-               result.addAll(solve(guests - element, availableTables));
+               List<Integer> subList = solve(guests - element, availableTables);
+               if (!subList.isEmpty()) {
+
+                  result.add(element);
+                  result.addAll(subList);
+               }
+
             }
          }
          return result;

@@ -13,7 +13,6 @@ public class Application {
    public static boolean found = false;
 
    static {
-
       tables.addAll(Arrays.asList(4, 3, 2, 1));
    }
 
@@ -21,12 +20,14 @@ public class Application {
 
       List<Integer> result = new ArrayList<>();
 
-      solve(11, result);
+      result = solve(5);
       System.out.println(result);
 
    }
 
-   public static void solve(int guests, List<Integer> result) {
+   public static List<Integer> solve(int guests) {
+      
+      List<Integer> result = new ArrayList<>();
       
       if (tables.contains(guests)) {
          result.add(guests);
@@ -34,14 +35,15 @@ public class Application {
       }
       else {
          for (int element : tables) {
-            System.out.println(tables);
+//            System.out.println(tables);
             if (element < guests && !found && !tables.isEmpty()) {
                result.add(element);
                tables.remove(element);
-               solve(guests - element, result);
+               result.addAll(solve(guests - element));
             }
          }
       }
+      return result;
 
    }
 

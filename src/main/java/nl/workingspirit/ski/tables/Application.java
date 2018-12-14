@@ -17,7 +17,7 @@ public class Application {
       Queue<Integer> atables = new ConcurrentLinkedQueue<>();
       atables.addAll(Arrays.asList(6, 5, 4, 3, 2, 1));
 
-      List<Integer> result= solve(1, atables);
+      List<Integer> result= solve(16, atables);
       System.out.println(result);
 
    }
@@ -27,11 +27,12 @@ public class Application {
       List<Integer> result = new ArrayList<>();
       
       if(availableTables.isEmpty()) {
-         return new ArrayList<>();
+        return result;
       }
 
       if (availableTables.contains(guests)) {
          result.add(guests);
+         availableTables.remove(guests);
          found = true;
          
          return result;

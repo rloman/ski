@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Application {
 
-   public static boolean found = false;
+   public static boolean goalReached = false;
 
    public static void main(String[] args) {
 
@@ -18,7 +18,7 @@ public class Application {
 
       // Collections.sort(atables);
 
-      List<Integer> result = solve(7, atables);
+      List<Integer> result = solve(21, atables);
       System.out.println(result);
 
    }
@@ -27,33 +27,27 @@ public class Application {
 
       List<Integer> result = new ArrayList<>();
 
-      if (availableTables.isEmpty()) {
-         return result;
-      }
-
       if (availableTables.contains(guests)) {
          result.add(guests);
-         availableTables.remove(guests);
-         found = true;
+         // availableTables.remove(guests);
+         goalReached = true;
 
-         return result;
       }
       else {
          for (int element : availableTables) {
-            if (element < guests && !found) {
+            if (element < guests && !goalReached) {
                availableTables.remove(element);
                List<Integer> subList = solve(guests - element, availableTables);
-               if (!subList.isEmpty()) {
 
+               // apparently there is a solution for the smaller value so now please at the element since I can make a (recursive) solution here, what I did above.
+               if (!subList.isEmpty()) {
                   result.add(element);
                   result.addAll(subList);
                }
-
             }
          }
-         return result;
       }
-
+      return result;
    }
 
 }

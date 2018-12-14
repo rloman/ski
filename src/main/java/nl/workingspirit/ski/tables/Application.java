@@ -21,24 +21,21 @@ public class Application {
 
       List<Integer> result = new ArrayList<>();
 
-      solve(8, result);
+      solve(11, result);
       System.out.println(result);
 
    }
 
    public static void solve(int guests, List<Integer> result) {
-
+      
       if (tables.contains(guests)) {
          result.add(guests);
          found = true;
       }
       else {
          for (int element : tables) {
-            if(found) {
-               return;
-            }
-
-            if (element < guests) {
+            System.out.println(tables);
+            if (element < guests && !found && !tables.isEmpty()) {
                result.add(element);
                tables.remove(element);
                solve(guests - element, result);

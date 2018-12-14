@@ -21,21 +21,16 @@ public class Application {
 
       List<Integer> result = new ArrayList<>();
 
-      solve(5, result);
+      solve(8, result);
       System.out.println(result);
 
    }
 
    public static void solve(int guests, List<Integer> result) {
-      System.out.println("Current available tables:"+tables);
 
       if (tables.contains(guests)) {
-         System.out.println("Tables contain guest:"+guests);
          result.add(guests);
-         tables.remove(guests);
          found = true;
-         
-         return;
       }
       else {
          for (int element : tables) {

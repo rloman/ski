@@ -1,4 +1,4 @@
-package nl.workingspirit.ski.utils;
+package nl.workingspirit.ski.utils.roman;
 
 // Java Program for above approach
 

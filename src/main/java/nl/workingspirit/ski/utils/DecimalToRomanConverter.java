@@ -1,3 +1,5 @@
+package nl.workingspirit.ski.utils;
+
 // Java Program for above approach
 
 class GFG

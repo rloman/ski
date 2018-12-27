@@ -9,7 +9,7 @@ public class Application {
       TableTools t = new TableTools();
       t.setAvailableTables(1, 6, 8, 7);
 
-      List<Integer> result = t.solve(9);
+      List<Integer> result = t.solve(10);
       System.out.println(result);
 
    }

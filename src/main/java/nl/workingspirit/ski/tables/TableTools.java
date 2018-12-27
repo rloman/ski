@@ -8,16 +8,24 @@ import java.util.TreeSet;
 
 public class TableTools {
 
-   private NavigableSet<Integer> availableTables = new TreeSet<>((n,m) -> m-n);
-
+   private NavigableSet<Integer> availableTables = new TreeSet<>();
+   private NavigableSet<Integer> availableTablesBackup  = new TreeSet<>();
+   
    public boolean goalReached = false;
 
    public List<Integer> solve(int guests) {
+      
+      
+      availableTablesBackup.addAll(this.availableTables);
+      System.out.println(availableTables+":1:"+availableTablesBackup);
 
-      for (int i = 0; i < 3; i++) {
+      for (int i = 0; i < 13; i++) {
+         this.availableTables = new TreeSet<>();
+         this.availableTables.addAll(this.availableTablesBackup);
+         System.out.println(availableTables+":2:"+availableTablesBackup);
          List<Integer> result = this.solveRecursive(guests + i);
          if (!result.isEmpty()) {
-//            System.out.println(result);
+            System.out.println(result);
             return result;
          }
       }
@@ -26,20 +34,22 @@ public class TableTools {
    }
 
    private List<Integer> solveRecursive(int guests) {
+      System.out.println("Finding for: "+guests);
 
       List<Integer> result = new ArrayList<>();
 
       if (availableTables.contains(guests)) {
          result.add(guests);
+         System.out.println("done");
          goalReached = true;
 
       }
       else {
          if (!goalReached) {
             Integer element = this.availableTables.floor(guests);
-            // for (int element : availableTables) {
-            if (element != null && element < guests  && !goalReached ) {
+            if (element != null) {
                availableTables.remove(element);
+               System.out.println(availableTables);
                List<Integer> subList = solveRecursive(guests - element);
 
                // apparently there is a solution for the smaller value so now please at the element since I can make a (recursive) solution here, what I did above.
@@ -48,7 +58,6 @@ public class TableTools {
                   result.addAll(subList);
                }
             }
-            // }
          }
       }
       return result;

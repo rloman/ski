@@ -3,45 +3,62 @@ package nl.workingspirit.ski.tables;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.NavigableSet;
-import java.util.TreeSet;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TableTools {
 
    private boolean goalReached = false;
-   
+
    private Integer[] tables;
 
    public List<Integer> solve(int guests, boolean exactMatch) {
 
-      if(exactMatch) {
-         NavigableSet<Integer> availableTables = new TreeSet<>();
-         availableTables.addAll(Arrays.asList(this.tables));
+      if (exactMatch) {
+         Queue<Integer> availableTables = new ConcurrentLinkedQueue<>();
+         List<Integer> tableList = Arrays.asList(tables);
+         tableList.sort((n,m ) -> m -n );
+         availableTables.addAll(tableList);
          return this.solveRecursive(guests, availableTables);
-         
+
       }
       else {
+         List<List<Integer>> integerListList = new ArrayList<>();
          for (int i = 0; i < 5; i++) {
-            NavigableSet<Integer> availableTables = new TreeSet<>();
-            availableTables.addAll(Arrays.asList(this.tables));
+            Queue<Integer> availableTables = new ConcurrentLinkedQueue<>();
+            List<Integer> tableList = Arrays.asList(tables);
+            tableList.sort((n,m ) -> m -n );
+            availableTables.addAll(tableList);
             List<Integer> result = this.solveRecursive(guests + i, availableTables);
             if (!result.isEmpty()) {
+               integerListList.add(result);
                System.out.println(result);
-               return result;
             }
          }
-
-         return new ArrayList<>();
+         return this.getListWithSmartestSeats(integerListList);
       }
    }
-   
-   private void foo() {
-      ArrayList l;
-      ArrayList l2;
-      
+
+   private List<Integer> getListWithSmartestSeats(List<List<Integer>> integerListList) {
+
+      System.out.println(integerListList);
+
+      long min = integerListList.get(0).stream().mapToInt(n -> n).sum();
+      int resultIndex = 0;
+      for (int i = 1; i < integerListList.size(); i++) {
+         int localMin = integerListList.get(i).stream().mapToInt(n -> n).sum();
+         if (localMin < min) {
+            min = localMin;
+            resultIndex = i;
+         }
+      }
+
+      return integerListList.get(resultIndex);
+
    }
 
-   private List<Integer> solveRecursive(int guests, NavigableSet<Integer> availableTables) {
+   //THE MAIN ALGORITHM. THE REST IF TO GET A LIST WHEN NO MATCH IS MADE
+   private List<Integer> solveRecursive(int guests, Queue<Integer> availableTables) {
 
       List<Integer> result = new ArrayList<>();
 
@@ -52,15 +69,16 @@ public class TableTools {
       }
       else {
          if (!goalReached) {
-            Integer element = availableTables.floor(guests);
-            if (element != null) {
-               availableTables.remove(element);
-               List<Integer> subList = solveRecursive(guests - element, availableTables);
+            for (Integer element : availableTables) {
+               if (element < guests && !goalReached) {
+                  availableTables.remove(element);
+                  List<Integer> subList = solveRecursive(guests - element, availableTables);
 
-               // apparently there is a solution for the smaller value so now please at the element since I can make a (recursive) solution here, what I did above.
-               if (!subList.isEmpty()) {
-                  result.add(element);
-                  result.addAll(subList);
+                  // apparently there is a solution for the smaller value so now please at the element since I can make a (recursive) solution here, what I did above.
+                  if (!subList.isEmpty()) {
+                     result.add(element);
+                     result.addAll(subList);
+                  }
                }
             }
          }

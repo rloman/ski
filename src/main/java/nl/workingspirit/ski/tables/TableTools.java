@@ -32,7 +32,6 @@ public class TableTools {
             List<Integer> result = this.solveRecursive(guests + i, availableTables);
             if (!result.isEmpty()) {
                integerListList.add(result);
-               System.out.println(result);
             }
          }
          return this.getListWithSmartestSeats(integerListList);
@@ -40,8 +39,6 @@ public class TableTools {
    }
 
    private List<Integer> getListWithSmartestSeats(List<List<Integer>> integerListList) {
-
-      System.out.println(integerListList);
 
       long min = integerListList.get(0).stream().mapToInt(n -> n).sum();
       int resultIndex = 0;

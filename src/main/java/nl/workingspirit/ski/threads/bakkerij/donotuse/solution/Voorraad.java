@@ -1,8 +1,9 @@
 package nl.workingspirit.ski.threads.bakkerij.donotuse.solution;
 
+import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Voorraad {
+public class Voorraad implements Serializable{
 
     private AtomicInteger voorraad = new AtomicInteger(0);
 

@@ -11,7 +11,7 @@ public class Application {
    public static void main(String[] args) {
       List<Integer> fibon = Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144);
 
-      final String groupName = "Working Spirits with Spirit!!!";
+      final String groupName = "Working rocks with Spirit!!!";
 
       // Supplier<String> stringSupplier = String::new;
 

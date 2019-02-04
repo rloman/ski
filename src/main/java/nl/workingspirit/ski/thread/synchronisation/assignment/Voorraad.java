@@ -1,5 +1,6 @@
-package nl.workingspirit.ski.thread.synchronisation;
+package nl.workingspirit.ski.thread.synchronisation.assignment;
 
+// This class models the voorraad (supply)
 public class Voorraad {
 
    private static Voorraad instance;
@@ -21,17 +22,11 @@ public class Voorraad {
    }
 
    public synchronized void increment() {
-      System.out.println("Ik ben nu in increment ...  value is: " + this.voorraad);
-      voorraad++;
-      notifyAll();
+      // Add your code here!
    }
 
    public synchronized void decrement() throws InterruptedException {
-      System.out.println("Ik ben nu in decrement ...  value is: " + this.voorraad);
-      while(voorraad == 0) {
-         wait();
-      }
-      voorraad--;
+     // Add your code here!
    }
 
    public int getVoorraad() {

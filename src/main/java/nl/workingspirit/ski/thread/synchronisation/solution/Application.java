@@ -1,4 +1,4 @@
-package nl.workingspirit.ski.thread.synchronisation;
+package nl.workingspirit.ski.thread.synchronisation.solution;
 
 
 public class Application {

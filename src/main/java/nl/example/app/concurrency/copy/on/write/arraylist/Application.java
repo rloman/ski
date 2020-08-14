@@ -8,17 +8,20 @@ public class Application {
     public static void main(String[] args) {
         // problem but rocks. Do you see why?
         {
-            List<Integer> numbers = new ArrayList<>();
-            numbers.addAll(Arrays.asList(1, 1, 2, 3, 5, 6));
 
+            List<Integer> numbers = new ArrayList<>();
+            numbers.addAll(Arrays.asList(1, 1, 2, 5, 3, 4, 5, 5, 6));
+
+            int size = numbers.size();
 
             // rocks since the size is queried per iteration
-            for (int index = 0; index < numbers.size(); index++) {
+            for (int index = 0; index < size; index++) {
                 if (5 == numbers.get(index)) {
-                    numbers.remove(index);
+                    numbers.remove(index--);
                     System.out.println(numbers);
                 }
             }
+            System.out.println(numbers);
         }
 
         // fails

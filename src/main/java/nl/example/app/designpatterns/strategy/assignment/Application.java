@@ -4,6 +4,9 @@ public class Application {
 
     public static void main(String[] args) {
 
+
+        /*
+
         System.out.println("== Knight");
         Character k = new Knight();
         k.performUseWeapon();
@@ -16,5 +19,7 @@ public class Application {
         k = new Knight();
         k.setWeaponBehaviour(new SwordBehaviour());
         k.performUseWeapon();
+
+         */
     }
 }
